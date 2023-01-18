@@ -4,7 +4,7 @@ FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.15
 ARG BUILD_DATE
 ARG VERSION
 ARG BOOKSTACK_RELEASE
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL build_version="DustinReynoldsPE Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="homerr"
 
 # package versions
@@ -45,12 +45,12 @@ RUN \
   mkdir -p\
     /app/www && \
   if [ -z ${BOOKSTACK_RELEASE+x} ]; then \
-    BOOKSTACK_RELEASE=$(curl -sX GET "https://api.github.com/repos/bookstackapp/bookstack/releases/latest" \
+    BOOKSTACK_RELEASE=$(curl -sX GET "https://api.github.com/repos/DustinReynoldsPE/bookstack/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
   curl -o \
     /tmp/bookstack.tar.gz -L \
-    "https://github.com/BookStackApp/BookStack/archive/${BOOKSTACK_RELEASE}.tar.gz" && \
+    "https://github.com/DustinReynoldsPE/BookStack/archive/${BOOKSTACK_RELEASE}.tar.gz" && \
   tar xf \
     /tmp/bookstack.tar.gz -C \
     /app/www/ --strip-components=1 && \
